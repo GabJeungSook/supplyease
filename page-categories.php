@@ -27,7 +27,7 @@ if (!isset($_SESSION['loggedin'])) {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../SupplyEase/static/styles/style-adminpanel.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/style-categories.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>

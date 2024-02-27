@@ -16,19 +16,16 @@ if (!isset($_SESSION['loggedin'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>Admin Dashboard</title>
-
     <!-- Montserrat Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../SupplyEase/static/styles/style-adminpanel.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/style-adminpanel.css">
   </head>
   <body>
     <div class="grid-container">
-
 
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
