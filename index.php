@@ -120,10 +120,10 @@ session_start();
         </ul>
 
          <!-- products -->
-    <div class="products">
+    <div class="products" style="background-color:white;">
         <div class="products-container">
-            <div class="product-header" style="margin-top: 40px">
-                <h3>Product Lists</h3>
+            <div class="product-header" style="margin-top: 40px;">
+                <h3 style="color:black;">Product Lists</h3>
             </div>
             <div class="product-lists">
 

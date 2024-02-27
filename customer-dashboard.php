@@ -7,6 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 
            //query the user name from the database
+  
   include_once 'config.php';
   $userId = $_SESSION['user_id'];
   $query = "SELECT * FROM users WHERE user_id = $userId";
@@ -49,13 +50,15 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="sidebar-title">
           <div class="profile-info">
             <img src="profile-picture.jpg" alt="">
-            <p><strong>Name : </strong><?php echo $row['name']?></p>
+            <p><?php echo $row['name']?></p>
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
 
         <ul class="sidebar-nav">
-          
+        <li class="sidebar-nav-link">
+              <span id="home" class="clickable" onclick="toggleHome()">Home</span>
+          </li>
           <li class="sidebar-nav-link">
               <span id="account" class="clickable" onclick="toggleProfileCard()">My Account</span>
           </li>
@@ -66,7 +69,7 @@ if (!isset($_SESSION['loggedin'])) {
               <span>Contact Seller</span>
             </li>
             <li class="sidebar-nav-link" id="logout">
-              <span>Logout</span>
+              <span class="clickable" onclick="toggleLogout()">Logout</span>
             </li>
       </ul>
       </aside>
@@ -79,23 +82,24 @@ if (!isset($_SESSION['loggedin'])) {
        <div class="card" id="profile-card">
         <h2>My Profile</h2>
         <label for="name">Name</label>
-        <input type="text" id="name" value="John Doe">
+        <input type="text" id="name" value="<?php echo $row['name']; ?>">
         <label for="username">Username</label>
-        <input type="text" id="username" value="johndoe">
+        <input type="text" id="username" value="<?php echo $row['username']; ?>">
         <label for="password">Password</label>
-        <input type="password" id="password" value="********">
+        <input type="password" id="password" value="<?php echo $row['password']; ?>">
         <label for="email">Email</label>
-        <input type="email" id="email" value="johndoe@example.com">
+        <input type="email" id="email" value="<?php echo $row['email']; ?>">
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" value="123-456-7890">
+        <input type="tel" id="phone" value="">
         <label for="gender">Gender</label>
         <select id="gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-        <label for="address">Address</label>
-        <textarea id="address"></textarea>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+</select>
+<label for="address">Address</label>
+<textarea id="address"></textarea>
+
         <button onclick="saveProfile()">Save</button>
       </div>
         <div class="card" id="purchase-card">
@@ -150,10 +154,35 @@ if (!isset($_SESSION['loggedin'])) {
       const purchaseCard = document.getElementById("purchase-card");
       purchaseCard.style.display = purchaseCard.style.display === "none" ? "block" : "none";
     }
-    function saveProfile() {
-      // Add logic to save profile information
-      // For example, retrieve values from input fields and send them to the server
+
+    function toggleLogout(){
+      window.location.href = "page-signout.php";
     }
+    function toggleHome(){
+      window.location.href = "index.php";
+    }
+ //-------------------To Save Profile----------------------//
+    function saveProfile() {
+         // Get the values from the input fields
+         var phone = document.getElementById("phone").value;
+        var gender = document.getElementById("gender").value;
+        var address = document.getElementById("address").value;
+
+        // Make an AJAX request to save the profile data
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "save_profile.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Handle the response from the server
+                console.log(xhr.responseText);
+                  // Display an alert message
+        alert("Information saved successfully!");
+            }
+        };
+        xhr.send("phone=" + encodeURIComponent(phone) + "&gender=" + encodeURIComponent(gender) + "&address=" + encodeURIComponent(address));
+    }
+
     </script>
   </body>
 </html>
