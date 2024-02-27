@@ -1,0 +1,60 @@
+/* Splash or Advertisement */
+
+.splash {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* min-height: 100vh; */
+  }
+  
+  .splash-container {
+    height: 20vw; /* adjust the height based on the width */
+    width: 40vw; /* adjust the width based on the viewport */
+    overflow: hidden;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.4);
+    /* margin-top: 110px;
+    background: chocolate; */
+  }
+  
+  .splash-container .images {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .images img {
+    height: 100%;
+    width: 100%;
+    object-fit: fill; /* ensure the image covers the entire container, fill */
+  }
+  
+  /* adjust the layout based on different screen sizes */
+  @media (max-width: 768px) {
+    .splash-container {
+      height: 25vw;
+      width: 60vw;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .splash-container {
+      height: 30vw;
+      width: 70vw;
+    }
+  }
+
+
+
+/* .splash {
+    width: 100%;
+    padding: 5px;
+    margin-top: 105px;
+    height: 300px;
+    background: chocolate;
+    position: relative;
+}
+
+.splash label {
+    text-align: center;
+} */

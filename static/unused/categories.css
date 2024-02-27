@@ -1,0 +1,65 @@
+/* CATEGORIES */
+.categories-container {
+    position: fixed; /* stay on left side when scrolling */
+    top: 105px; /* adjust top position */
+    left: 0; /* stay on left side */
+    background: #3A4D39;
+    min-height: 40px;
+    padding-top: 10px;
+    width: 200px; /* adjust width */
+  }
+  
+  .categories-container h3 {
+    padding: 5px;
+    text-align: center;
+    color: #FEFAE0;
+  }
+  
+  .categories-container .categories {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 0 20px;
+    list-style: none;
+    margin: 0.8rem;
+  }
+  
+  .categories-container .categories .button {
+    height: 40px;
+    width: 130px;
+    background: #666;
+    color: #fff;
+    font-size: 12px;
+    line-height: 40px;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    text-align: center;
+  }
+  
+  .categories-container .categories .button.active {
+    background: #bc742c;
+  }
+  
+  .categories-container .categories .button:hover {
+    background: black;
+  }
+  
+  /* adjust size for smaller screens */
+  @media screen and (max-width: 600px) {
+    .categories-container {
+      width: 100%; /* adjust width to 100% */
+      padding: 10px; /* adjust padding */
+    }
+  
+    .categories-container .categories .button {
+      width: 100%; /* adjust button width to 100% */
+      margin: 5px 0; /* adjust margin */
+    }
+  }
+  
+  /* move other div for the categories to fit on the left side */
+  .other-div {
+    margin-left: 220px; /* adjust margin-left to accommodate the fixed categories-container */
+  }

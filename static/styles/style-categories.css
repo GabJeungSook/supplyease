@@ -1,0 +1,80 @@
+/* CATEGORIES */
+
+.categories-container {
+    margin-top: 105px;
+    background: #3A4D39;
+    min-height: 40px;
+    /* padding-bottom: 100px; */
+    padding-top: 10px;
+}
+
+.categories-container h3 {
+    padding: 5px;
+    text-align: center;
+    color: #FEFAE0;
+}
+
+.categories-container .categories {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 0 20px;
+    list-style: none;
+    margin: 0.8rem;
+}
+
+.categories-container .categories .button {
+    height: 40px;
+    width: 130px;
+    background: #666;
+    color: #fff;
+    font-size: 12px;
+    line-height: 40px;
+    cursor: pointer;
+    margin: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .3);
+    text-align: center;
+}
+
+.categories-container .categories .button.active {
+    background: #bc742c;
+}
+
+.categories-container .categories .button:hover {
+    background: black;
+}
+
+
+
+
+
+/* .categories-container {
+    background: #3A4D39;
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    height: 100px;
+    padding: 20px;
+}
+
+.categories-container h2 {
+    padding: 10px;
+    text-align: center;
+}
+
+.categories {
+    display: flex;
+    padding: 3px;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.categories ul {
+    text-align: center;
+    
+} */
+
+
+

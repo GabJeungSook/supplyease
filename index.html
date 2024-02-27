@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SupplyEase</title>
+    <link rel="stylesheet" type="text/css" href="static/styles/style-home.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/style-splash.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/style-categories.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/style-products.css">
+    <link rel="stylesheet" type="text/css" href="static/styles/style-sidecart.css">
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- <script src="static/scripts/script-splash.js"></script> -->
+</head>
+
+<body>
+    <!-- header -->
+    <div class="header-container">
+        <div class="logo">
+            <img src="static/images/SupplyEase-Logo.png" alt="">
+            <h1>SupplyEase</h1>
+        </div>
+
+        <!-- <button type="submit"><img src="static/images/image-search.png" alt="Search">></button>
+        <li><a href="#"><img src="static/images/image-home.png" alt="Home">Home</a></li>
+        <li><a href="#"><img src="static/images/image-account.png" alt="About Us">About Us</a></li>
+        <li><a href="#"><img src="static/images/image-account.png" alt="Message Us">Message Us</a></li>
+        <li><a href="#"><img src="static/images/image-addToCart.png" alt="Shopping Cart">Shopping Cart</a></li>
+        <li><a href="#"><img src="static/images/image-account.png" alt="Profile">Profile</a></li> -->
+
+        <ul class="navbar">
+            <div class="searchbar">
+                <input type="text" placeholder="Search...">
+                <button type="submit">></button>
+            </div>
+            <span><a href="page-home.html">Home</a></span>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Seller</a></li>
+            <li><a href="page-signup.php">Sign up</a></li>
+            <li><a href="page-signin.php">login</a></li>
+            <li><a id="open_cart_btn" href="#">Shopping Cart</a></li>
+        </ul>
+        <label class="small-icon" id="icon">=</label>
+    </div>
+    <!-- header -->
+
+    <!-- categories -->
+    <div class="categories-container">
+        <h3>CATEGORIES</h3>
+
+        <ul class="categories">
+            <li class="button active">All Products</li>
+            <li class="button">Copy & Printer Paper</li>
+            <li class="button">Paper Supplies</li>
+            <li class="button">Filing & Storage</li>
+            <li class="button">Writing Instruments</li>
+            <li class="button">Tapes & Adhesives </li>
+            <li class="button">Desk Accessories</li>
+            <li class="button">Arts & Crafts</li>
+            <li class="button">General Supplies</li>
+            <li class="button">Presentation</li>
+        </ul>
+    </div>
+    <!-- categories -->
+
+    <!-- splash body -->
+    <section class="splash">
+        <div class="splash-container">
+            <div class="images">
+                <img src="static/images/slideshow/t1.jpg" alt="">
+                <img src="static/images/slideshow/t2.jpg" alt="">
+                <img src="static/images/slideshow/t3.jpg" alt="">
+                <img src="static/images/slideshow/t4.jpg" alt="">
+                <img src="static/images/slideshow/t5.jpg" alt="">
+            </div>
+        </div>
+    </section>
+    <!-- splash body -->
+
+
+    <!-- products -->
+    <div class="products">
+        <div class="products-container">
+            <div class="product-header">
+                <h3>Product Lists</h3>
+            </div>
+            <div class="product-lists">
+
+                <!-- <div class="product-card">
+                    <img src="static/images/slideshow/t1.jpg" alt="" />
+                    <h4>Product Name</h4>
+                    <div>
+                        <span>₱150</span>
+                        <button>Add to Cart</button>
+                    </div>
+                </div> -->
+
+
+                <!-- <div class="items">
+
+                    <div class="item">
+                        <img src="static/images/slideshow/t1.jpg" alt="" />
+                        <button>Add to Cart</button>
+                    </div>
+
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+    <!-- products -->
+
+
+    <!-- <button id="open_cart_btn">
+        <img src="static/images/image-addToCart.png" alt="" style="width: 30px;">
+    </button> -->
+
+
+    <div class="backdrop"></div>
+
+    <!-- sidecart -->
+    <div id="sidecart" class="sidecart">
+        <div class="cart_content">
+
+            <div class="cart_header">
+                <img src="static/images/image-addToCart.png" alt="" style="width: 30px;" />
+                <div class="header_title">
+                    <h2>Your Cart</h2>
+                    <span id="items_num">0</span>
+                </div>
+                <span id="close_btn" class="close_btn">&times;</span>
+            </div>
+
+            <div class="cart_items">
+
+                <!-- Item1 -->
+                <!-- <div class="cart_item">
+                    <div class="remove_item">
+                        <span>&times;</span>
+                    </div>
+                    <div class="item_img">
+                        <img src="static/images/slideshow/t3.jpg" alt="">
+                    </div>
+                    <div class="item_details">
+                        <p>Calculator</p>
+                        <strong>₱550</strong>
+                        <div class="qty">
+                            <span>-</span>
+                            <strong>1</strong>
+                            <span>+</span>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+
+            <div class="cart_actions">
+                <div class="subtotal">
+                    <p>SUBTOTAL:</p>
+                    <p>₱<span id="subtotal_price">100</span></p>
+                </div>
+                <button>View Cart</button>
+                <a href="page-checkout.html">
+                    <button>Check Out</button>
+                  </a>
+            </div>
+        </div>
+    </div>
+    <!-- sidecart -->
+
+
+    <!-- javascript -->
+    <script src="static/scripts/script-home.js"></script>
+    <script src="static/scripts/script-splash.js"></script>
+    <script src="static/scripts/script-sidecart.js"></script>
+
+</body>
+
+</html>
