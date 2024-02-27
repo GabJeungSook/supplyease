@@ -52,7 +52,7 @@ if (isset($_POST['productId'])) {
         }
     } else {
         // No products found
-        echo '<p style="font-size: 22px; margin-top: 10px; color: white;">-- No products found in this category --</p>';
+        echo '<p style="font-size: 22px; margin-top: 10px; color: white;">-- No products found in this cart --</p>';
     }
     // Close the database connection
     mysqli_close($conn);
