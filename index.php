@@ -169,38 +169,35 @@ session_start();
                 <img src="static/images/image-addToCart.png" alt="" style="width: 30px;" />
                 <div class="header_title">
                     <h2>Your Cart</h2>
-                    <span id="items_num">0</span>
+                    <span id="items_num"><?php
+                     if(isset($_SESSION['cart_count']))
+                     {
+                    echo $_SESSION['cart_count'];
+                     }else{
+                         echo '0';
+                     }
+                    ?></span>
                 </div>
                 <span id="close_btn" class="close_btn">&times;</span>
             </div>
 
             <div class="cart_items">
-
-                <!-- Item1 -->
-                <!-- <div class="cart_item">
-                    <div class="remove_item">
-                        <span>&times;</span>
-                    </div>
-                    <div class="item_img">
-                        <img src="static/images/slideshow/t3.jpg" alt="">
-                    </div>
-                    <div class="item_details">
-                        <p>Calculator</p>
-                        <strong>₱550</strong>
-                        <div class="qty">
-                            <span>-</span>
-                            <strong>1</strong>
-                            <span>+</span>
-                        </div>
-                    </div>
-                </div> -->
-
+           
             </div>
-
             <div class="cart_actions">
+                
                 <div class="subtotal">
                     <p>SUBTOTAL:</p>
-                    <p>₱<span id="subtotal_price">100</span></p>
+                    <p>₱<span id="subtotal_price"><?php 
+                    if(isset($_SESSION['subtotal']))
+                    {
+                        echo number_format($_SESSION['subtotal'], 2);
+                    }else{
+                        echo '0.00';
+                    }
+                   
+                    
+                    ?></span></p>
                 </div>
                 <!-- <button>View Cart</button> -->
                 <a href="page-checkout.html">
@@ -220,7 +217,7 @@ session_start();
     $(document).ready(function() {
         // Initially, display all products when the page loads
         displayProducts('All Products');
-
+        displayCartItems();
         // Add click event listener to category buttons
         $('.categories .button').click(function() {
             // Remove active class from all buttons
@@ -261,6 +258,45 @@ session_start();
 
     });
 
+    $('.cart_content').on('click', '.remove_item span', function() {
+        var cartId = $(this).data('product-id');
+        // Remove the selected product from the cart
+        removeFromCart(cartId);
+    });
+
+    function removeFromCart(cartId) {
+        // Remove product from the cart via AJAX based on the selected product ID
+        $.ajax({
+            type: 'POST',
+            url: 'remove_from_cart.php',
+            data: { cartId: cartId },
+            success: function(response) {
+                alert('Product removed to your cart!');
+                window.setTimeout(function() { window.location.href = 'index.php'; }, 100);
+                $('.cart_items').html(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
+    function displayCartItems()
+    {
+        $.ajax({
+            type: 'POST',
+            url: 'get_cart_items.php', // Replace with the URL of your PHP script to fetch the number of items in the cart
+            success: function(response) {
+                // Update the number of items in the cart
+                $('.cart_items').html(response);
+                // $('#items_num').text(response);
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    }
+
     function addToCart(productId) {
         console.log(productId);
         // Fetch product details via AJAX based on the selected product ID
@@ -274,30 +310,16 @@ session_start();
                     alert('You must log in first before adding items to your cart');
                    window.setTimeout(function() { window.location.href = 'page-signin.php'; }, 100);
                 }else{
+                    alert('Product added to your cart!');
+                    window.setTimeout(function() { window.location.href = 'index.php'; }, 100);
                     $('.cart_items').html(response);
-              
                 }
-               
             },
             error: function(xhr, status, error) {
                 console.error(xhr.responseText);
             }
         });
     }
-
-    // function updateCartItems() {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: 'get_cart_items.php', // Replace with the URL of your PHP script to fetch the number of items in the cart
-    //         success: function(response) {
-    //             // Update the number of items in the cart
-    //             $('#items_num').text(response);
-    //         },
-    //         error: function(xhr, status, error) {
-    //             console.error(xhr.responseText);
-    //         }
-    //     });
-    // }
 </script>
 
 

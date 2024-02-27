@@ -39,17 +39,30 @@ if (isset($_POST['productId'])) {
     if (mysqli_num_rows($result) > 0) {
         // Loop through products and generate product cards
         while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="cart_item>';
+            echo '<div class="cart_item">';
+            echo '<div class="remove_item">';
+            echo '<span>&times;</span>';
+            echo '</div>';
+            echo '<div class="item_img">';
+            echo '<img src="static/images/slideshow/t3.jpg" alt="">';
+            echo '</div>';
             echo '<div class="item_details">';
             echo '<p>'.$row['name'].'</p>';
-            echo '<strong>₱550</strong>';
+            echo '<strong>'.number_format($row['price'] * $row['quantity'], 2).'</strong>';
             echo '<div class="qty">';
             echo ' <span>-</span>';
             echo ' <strong>'.$row['quantity'].'</strong>';
+            echo '<span>+</span>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
+
         }
+            //add subtotal of all items in the cart
+            $select_query = "SELECT SUM(products.price * carts.quantity) as total FROM carts INNER JOIN products ON carts.product_id = products.product_id WHERE carts.user_id = $userId";
+            $result = mysqli_query($conn, $select_query);
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION['subtotal'] = $result == null ? 0 : $row['total'];
     } else {
         // No products found
         echo '<p style="font-size: 22px; margin-top: 10px; color: white;">-- No products found in this cart --</p>';
@@ -58,7 +71,6 @@ if (isset($_POST['productId'])) {
     mysqli_close($conn);
 
     // Return a success message (or any other response as needed)
-    echo "Product added to cart successfully";
 } else {
     // Return an error message if the product ID is not provided or the user is not logged in
     echo "Error: Product ID not provided or user not logged in";

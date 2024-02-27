@@ -1,3 +1,18 @@
+<?php
+//if the user is not logged in, redirect to the sign-in page
+session_start();
+if (!isset($_SESSION['loggedin'])) {
+    header("Location: page-signin.php");
+    exit();
+}
+
+           //query the user name from the database
+  include_once 'config.php';
+  $userId = $_SESSION['user_id'];
+  $query = "SELECT * FROM users WHERE user_id = $userId";
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_assoc($result);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,7 +49,7 @@
         <div class="sidebar-title">
           <div class="profile-info">
             <img src="profile-picture.jpg" alt="">
-            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Name : </strong><?php echo $row['name']?></p>
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
@@ -59,7 +74,7 @@
 
       <!-- Main -->
       <main class="main-container">
-        <h2> Welcome, John Doe</h2>
+        <h2> Welcome, <?php echo $row['name']?></h2>
 
        <div class="card" id="profile-card">
         <h2>My Profile</h2>
