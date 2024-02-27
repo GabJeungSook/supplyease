@@ -19,6 +19,7 @@ body {
     display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 5px 5px 4px rgba(45, 43, 43, 0.701);
 }
 
 .header-container.scrolled {
@@ -67,11 +68,12 @@ body {
     top: 100px;
     bottom: 0;
     width: 400px;
-    background-color: #B99470;
+    /*background-color: #B99470;*/
     padding: 50px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    
 }
 
 .side img {
@@ -81,7 +83,7 @@ body {
 }
 
 .side p {
-    color: #fff;
+    color: #333;
     margin-bottom: auto;
     font-family: "Poppins", sans-serif;
     font-size: 40px;

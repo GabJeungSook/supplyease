@@ -163,24 +163,7 @@ if (!isset($_SESSION['loggedin'])) {
     }
  //-------------------To Save Profile----------------------//
     function saveProfile() {
-         // Get the values from the input fields
-         var phone = document.getElementById("phone").value;
-        var gender = document.getElementById("gender").value;
-        var address = document.getElementById("address").value;
-
-        // Make an AJAX request to save the profile data
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "save_profile.php", true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Handle the response from the server
-                console.log(xhr.responseText);
-                  // Display an alert message
-        alert("Information saved successfully!");
-            }
-        };
-        xhr.send("phone=" + encodeURIComponent(phone) + "&gender=" + encodeURIComponent(gender) + "&address=" + encodeURIComponent(address));
+        
     }
 
     </script>
