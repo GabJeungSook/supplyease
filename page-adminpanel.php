@@ -70,22 +70,12 @@ if (!isset($_SESSION['loggedin'])) {
           </li>
           <li class="sidebar-list-item">
             <a href="#">
-              <span class="material-icons-outlined">fact_check</span> Inventory
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#">
               <span class="material-icons-outlined">add_shopping_cart</span> Purchase Orders
             </a>
           </li>
           <li class="sidebar-list-item">
             <a href="#">
               <span class="material-icons-outlined">shopping_cart</span> Sales Orders
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#">
-              <span class="material-icons-outlined">poll</span> Reports
             </a>
           </li>
           <li class="sidebar-list-item">
