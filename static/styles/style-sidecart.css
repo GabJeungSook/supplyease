@@ -221,7 +221,7 @@ body {
 
 .cart_actions button{
     border: none;
-    background-color: #26d72f;
+    background-color: #022e04;
     color: #fff;
     border-radius: 15px;
     padding: 10px;
@@ -235,7 +235,7 @@ body {
     list-style-type: none;
     text-align: center;
     border: none;
-    background-color: #26d72f;
+    background-color: #022e04;
     color: #fff;
     border-radius: 15px;
     font-size: 14px;
@@ -248,7 +248,7 @@ body {
 
 
 .cart_actions button:nth-of-type(2) {
-    background-color: #06e65c;
+    background-color: #022e04;
 }
 
 .cart_actions button:hover {

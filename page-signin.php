@@ -28,7 +28,7 @@ if (isset($_SESSION['loggedin'])) {
 <body>
     <div class="header-container">
         <div class="logo">
-            <a href="page-home.html">
+            <a href="index.php">
                 <img src="static/images/SupplyEase-Logo.png" alt="">
             </a>
             <!-- <h1><a href="page-home.html">SupplyEase</a></h1> -->
@@ -58,16 +58,18 @@ if (isset($_SESSION['loggedin'])) {
                     // Check if result contains any rows
                     if ($result->num_rows > 0) {
                         $_SESSION['loggedin'] = true;
+                     
                         // User is authenticated, redirect to dashboard or another page
                         echo "<script>showAlert('Successfully logged in!', 'success');</script>";
                         // Redirect to login page after a delay
                         
                         $row = $result->fetch_assoc();
+                        $_SESSION['user_id'] = $row['user_id'];
                         if($row['role_id'] === '1')
                         {
                             echo "<script>window.setTimeout(function() { window.location.href = 'page-adminpanel.php'; }, 100);</script>";
                         }else{
-                            echo "<script>window.setTimeout(function() { window.location.href = 'customer-dashboard.html'; }, 100);</script>";
+                            echo "<script>window.setTimeout(function() { window.location.href = 'index.php'; }, 100);</script>";
                         }
                       
                         exit();
