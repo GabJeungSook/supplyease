@@ -55,12 +55,10 @@ if (isset($_SESSION['loggedin'])) {
                 $password = $_POST['password'];
                 $email = $_POST['email'];
 
-                // Check if passwords match
                 $confirm_password = $_POST['confirm_password'];
                 if ($password !== $confirm_password) {
                     echo "<script>showAlert('Passwords do not match.', 'error');</script>";
                 } else {
-                    // Check if username already exists
                     $check_username = "SELECT * FROM users WHERE username='$username'";
                     $result_username = $conn->query($check_username);
                     // Check if email already exists
