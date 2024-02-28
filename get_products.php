@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"]) {
         }
     } else {
         // No products found
-        echo '<p style="font-size: 22px; margin-top: 10px; color: white;">-- No products found in this category --</p>';
+        echo '<p style="font-size: 22px; margin-top: 40px; color: #0d0c0c;">-- No products found in this category --</p>';
     }
 
     // Close database connection

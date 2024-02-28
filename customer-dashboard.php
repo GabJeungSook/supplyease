@@ -10,7 +10,9 @@ if (!isset($_SESSION['loggedin'])) {
   
   include_once 'config.php';
   $userId = $_SESSION['user_id'];
-  $query = "SELECT * FROM users WHERE user_id = $userId";
+  $query = "SELECT users.*, user_profile.* FROM users 
+            LEFT JOIN user_profile ON users.user_id = user_profile.user_id 
+            WHERE users.user_id = $userId";
   $result = mysqli_query($conn, $query);
   $row = mysqli_fetch_assoc($result);
 ?>
@@ -29,6 +31,7 @@ if (!isset($_SESSION['loggedin'])) {
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./static/styles/customer-dash.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <div class="grid-container">
@@ -79,29 +82,33 @@ if (!isset($_SESSION['loggedin'])) {
       <main class="main-container">
         <h2> Welcome, <?php echo $row['name']?></h2>
 
-       <div class="card" id="profile-card">
+        <div class="card" id="profile-card">
         <h2>My Profile</h2>
+        <form id="saveProfileForm">
+        <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" value="<?php echo $row['name']; ?>">
+        <input type="text" id="name" name="name" value="<?php echo $row['name']; ?>">
         <label for="username">Username</label>
-        <input type="text" id="username" value="<?php echo $row['username']; ?>">
+        <input type="text" id="user_name" name="user_name" value="<?php echo $row['username']; ?>">
         <label for="password">Password</label>
-        <input type="password" id="password" value="<?php echo $row['password']; ?>">
+        <input type="password" id="password" name="password" value="<?php echo $row['password']; ?>">
         <label for="email">Email</label>
-        <input type="email" id="email" value="<?php echo $row['email']; ?>">
+        <input type="email" id="email" name="email" value="<?php echo $row['email']; ?>">
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" value="">
+        <input type="tel" id="phone" name="phone" value="<?php echo $row['phone_number']; ?>">
         <label for="gender">Gender</label>
-        <select id="gender">
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="other">Other</option>
-</select>
-<label for="address">Address</label>
-<textarea id="address"></textarea>
+        <select id="gender" name="gender">
+        <option value="male" <?php echo $row['gender'] == "male" ? "selected" : ""; ?>>Male</option>
+        <option value="female" <?php echo $row['gender'] == "female" ? "selected" : ""; ?>>Female</option>
+        <option value="other" <?php echo $row['gender'] == "other" ? "selected" : ""; ?>>Other</option>
+        </select>
+        <label for="address">Address</label>
+        <textarea id="address" name="address"><?php echo $row['address'];?></textarea>
+        <button type="submit">Save</button>
+        </div>
+        </form>
+        </div>
 
-        <button onclick="saveProfile()">Save</button>
-      </div>
         <div class="card" id="purchase-card">
           <h2>My purchase</h2>
           <table>
@@ -162,9 +169,33 @@ if (!isset($_SESSION['loggedin'])) {
       window.location.href = "index.php";
     }
  //-------------------To Save Profile----------------------//
-    function saveProfile() {
-        
-    }
+      $('#saveProfileForm').submit(function(event) {
+           
+           event.preventDefault(); // Prevent default form submission
+
+           // Get form data
+           var formData = $(this).serialize();
+          
+           // Submit form data via AJAX
+           $.ajax({
+               type: 'POST',
+               url: 'save_profile.php',
+               data: formData,
+               success: function(response) {
+                 console.log(formData);
+                   // Handle response (e.g., show success message, update category list)
+                   // window.setTimeout(function() { window.location.href = 'page-categories.php'; }, 100);
+                   // Close modal
+                  //  $('#addProductModal').modal('hide');
+                  alert('Profile updated successfully');
+                  window.location.reload();
+               },
+               error: function(xhr, status, error) {
+                   // Handle errors
+                   console.error(xhr.responseText);
+               }
+           });
+       });
 
     </script>
   </body>
