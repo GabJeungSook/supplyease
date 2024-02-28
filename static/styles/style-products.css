@@ -6,6 +6,9 @@ body {
     color: #666666;
     font-family: "Montserrat", sans-serif;
   }
+::-webkit-scrollbar {
+    width: 3px;
+ }
   
   .material-icons-outlined {
     vertical-align: middle;

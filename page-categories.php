@@ -44,10 +44,10 @@ if (!isset($_SESSION['loggedin'])) {
           <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
-          <span class="material-icons-outlined">search</span>
+         
         </div>
         <div class="header-right">
-          <span class="material-icons-outlined">account_circle</span>
+  
         </div>
       </header>
       <!-- End Header -->
