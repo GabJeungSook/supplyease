@@ -14,6 +14,8 @@ session_start();
     <link rel="stylesheet" type="text/css" href="static/styles/style-categories.css">
     <link rel="stylesheet" type="text/css" href="static/styles/style-products.css">
     <link rel="stylesheet" type="text/css" href="static/styles/style-sidecart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
     <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <!-- <script src="static/scripts/script-splash.js"></script> -->
 
@@ -166,7 +168,7 @@ session_start();
         <div class="cart_content">
 
             <div class="cart_header">
-                <img src="static/images/image-addToCart.png" alt="" style="width: 30px;" />
+                <img src="static/images/image-addToCart.png" alt="" style="width: 30px; " />
                 <div class="header_title">
                     <h2>Your Cart</h2>
                     <span id="items_num"><?php
@@ -182,9 +184,11 @@ session_start();
             </div>
 
             <div class="cart_items">
-           
+                <div class="remove_item">
+                     <span type="button" id="cartId">x</span>
+                </div>
             </div>
-            <div class="cart_actions">
+            <div class="cart_actions"> 
                 
                 <div class="subtotal">
                     <p>SUBTOTAL:</p>
