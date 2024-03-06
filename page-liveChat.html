@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Live Chat</title>
+  <style>
+    /* CSS Styles */
+    .chat-window {
+      height: 300px;
+      overflow-y: scroll;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Live Chat Messaging</h1>
+  <div class="chat-window" id="chatWindow">
+    <p>Welcome to our live chat! How can we assist you?</p>
+  </div>
+  <input type="text" id="messageInput" placeholder="Type your message...">
+  <button onclick="sendMessage()">Send</button>
+
+  <script>
+    /* JS Code */
+    function sendMessage() {
+      var messageInput = document.getElementById("messageInput");
+      var message = messageInput.value;
+      var chatWindow = document.getElementById("chatWindow");
+      var chatMessage = document.createElement("p");
+      chatMessage.textContent = "You: " + message;
+      chatWindow.appendChild(chatMessage);
+      messageInput.value = "";
+      scrollToBottom();
+    }
+
+    function scrollToBottom() {
+      var chatWindow = document.getElementById("chatWindow");
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+  </script>
+</body>
+</html>
