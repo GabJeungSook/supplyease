@@ -2,37 +2,62 @@
 <html>
 <head>
   <title>Customer Service Page</title>
+  <link rel="stylesheet" href="./static/styles/style-contactseller.css">
 </head>
 <body>
-  <h1>Contact Information</h1>
-  <div class="contact-info">
-    <p>Phone: 123-456-7890</p>
-    <p>Email: info@example.com</p>
+  <div class="grid-container">
+    <div class="container container-contact">
+      <h1>Contact Information</h1>
+      <div class="contact-info">
+        <label>Contact us through: </label><br>
+        <p>Phone: 123-456-7890</p>
+        <p>Email: info@example.com</p>
+      </div>
+    </div>
+  
+    <div class="container container-FAQs">
+      <h1>FAQs</h1>
+      <div class="faq">
+        <h3>Question 1?</h3>
+        <p>Answer 1.</p>
+        <h3>Question 2?</h3>
+        <p>Answer 2.</p>
+        <!-- Add more FAQs as needed -->
+      </div>
+    </div>
+  
+    <div class="container container-policies">
+      <h1>Return and Refund Policies</h1>
+      <div class="return-policy">
+        <p>Our return policy allows you to return the product within 30 days of purchase. 
+          Please make sure the product is unused and in its original packaging.</p>
+      </div>
+    </div>
+  
+    <div class="container container-chat">
+      <h1>Live Chat Messaging</h1>
+      <p>Welcome to our live chat! Our team is dedicated to ensuring your satisfaction 
+        and providing prompt assistance. Feel free to ask any questions or share any 
+        concerns you may have. We're ready to help you find the information you're 
+        looking for and guide you through any process.
+        If you're interested in learning more about our offerings, 
+        we can provide you with detailed information and help you make an informed decision. 
+        We value your time and aim to provide efficient and effective support.
+        Please note that our live chat is available during our business hours. 
+        If you reach out to us outside of these hours, we'll get back to you as soon as possible 
+        when we're back online.
+        
+        Thank you for choosing our live chat. We look forward to assisting you!</p>
+      <div class="live-chat">
+        <button onclick="openChat()">Chat with Us</button>
+      </div>
+    </div>
   </div>
-
-  <h1>FAQs</h1>
-  <div class="faq">
-    <h3>Question 1?</h3>
-    <p>Answer 1.</p>
-    <h3>Question 2?</h3>
-    <p>Answer 2.</p>
-    <!-- Add more FAQs as needed -->
-  </div>
-
-  <h1>Return and Refund Policies</h1>
-  <div class="return-policy">
-    <p>Our return policy allows you to return the product within 30 days of purchase. Please make sure the product is unused and in its original packaging.</p>
-  </div>
-
-  <h1>Live Chat Messaging</h1>
-  <div class="live-chat">
-    <button onclick="openChat()">Chat with Us</button>
-  </div>
-
+  
   <script>
     /* JS Code */
     function openChat() {
-      window.open("page-liveChat.html", "_blank", "width=600,height=400");
+      window.open("page-liveChat.html");
     }
   </script>
 </body>

@@ -33,7 +33,7 @@ if (isset($_SESSION['user_id'])) {
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
         $sql_user = "UPDATE users SET name = '$name', username = '$user_name',email = '$email' WHERE user_id = $user_id";
-        $sql = "UPDATE user_profile SET phone_number = '$phone', gender = '$gender', address = '$address' WHERE user_id = $user_id";
+        $sql = "UPDATE user_profile SET phone_number = '$phone', gender = '$gender', profile_picture = "$profile_picture" address = '$address' WHERE user_id = $user_id";
         if ($conn->query($sql) === TRUE && $conn->query($sql_user) === TRUE){
             echo "Profile saved successfully!";
         } else {
@@ -41,7 +41,7 @@ if (isset($_SESSION['user_id'])) {
         }
     } else {
 
-    $sql = "INSERT INTO user_profile (user_id, phone_number, gender, address) VALUES ('$user_id', '$phone', '$gender', '$address')";
+    $sql = "INSERT INTO user_profile (user_id, phone_number, gender, address) VALUES ('$user_id', '$phone', '$gender', '$address', '$profile_picture')";
     if ($conn->query($sql) === TRUE) {
         echo "Profile saved successfully!";
     } else {

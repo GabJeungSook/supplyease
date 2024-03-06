@@ -3,7 +3,7 @@ body {
     padding: 0;
    
     color: #070707;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Courier New', Courier, monospace;
   }
   
   .material-icons-outlined {
@@ -56,24 +56,7 @@ body {
     padding: 20px 20px 20px 20px;
     margin-bottom: 30px;
   }
-  .profile-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
   
-  .profile-info img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 10px;
-    border: 2px solid black;
-  }
-  
-  .profile-info p {
-    margin: 0;
-    font-size: 18px;
-  }
   
   .sidebar-title > span {
     display: none;
@@ -203,6 +186,38 @@ body {
     text-align: left;
     border-bottom: 1px solid #ccc;
   }
+
+  /*-----Profile Pic---------------*/
+  #profilePictureInput {
+    /* Add your desired styles here */
+    background-color: #45a049;
+    font-size: 11px;
+    margin-top: -70px;
+    margin-left: 80px;
+    display: flex;
+    overflow: hidden;
+  }
+  .profile-info {
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .profile-info p{
+    font-size: 25px;
+  }
+  
+  .profile-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid black;
+  }
+  
+  .profile-info p {
+    margin: 0;
+    font-size: 18px;
+  }
+
   /* ---------- MEDIA QUERIES ---------- */
   
   /* Medium <= 992px */

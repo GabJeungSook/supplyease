@@ -51,10 +51,13 @@ if (!isset($_SESSION['loggedin'])) {
       <!-- Sidebar -->
       <aside id="sidebar">
         <div class="sidebar-title">
-          <div class="profile-info">
-            <img src="profile-picture.jpg" alt="">
-            <p><?php echo $row['name']?></p>
-          </div>
+        <div class="profile-info">
+  <img id="profile_picture" src="profile-picture.jpg" alt="">
+  <p><?php echo $row['name']?></p>
+  <input type="file" id="profilePictureInput" accept="image/*" onchange="updateProfilePicture(event)">
+  </div>
+    
+
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
 
@@ -68,9 +71,9 @@ if (!isset($_SESSION['loggedin'])) {
           <li class="sidebar-nav-link" id="purchase">
             <span class="clickable" onclick="togglePurchaseCard()">My Purchase</span>
           </li>
-            <li class="sidebar-nav-link" id="contact">
-              <span>Contact Seller</span>
-            </li>
+          <li class="sidebar-nav-link" id="contact">
+      <span>Contact Seller</span>
+    </li>
             <li class="sidebar-nav-link" id="logout">
               <span class="clickable" onclick="toggleLogout()">Logout</span>
             </li>
@@ -153,14 +156,22 @@ if (!isset($_SESSION['loggedin'])) {
     }
   }
   
-      function toggleProfileCard() {
-        const profileCard = document.getElementById("profile-card");
-        profileCard.style.display = profileCard.style.display === "none" ? "block" : "none";
-      }
-      function togglePurchaseCard() {
-      const purchaseCard = document.getElementById("purchase-card");
-      purchaseCard.style.display = purchaseCard.style.display === "none" ? "block" : "none";
-    }
+  function toggleProfileCard() {
+  const profileCard = document.getElementById("profile-card");
+  const purchaseCard = document.getElementById("purchase-card");
+
+  // Toggle the visibility of the profile card
+  profileCard.style.display = profileCard.style.display === "none" ? "block" : "none";
+
+  // Hide the purchase card when the profile card is open
+  if (profileCard.style.display === "block") {
+    purchaseCard.style.display = "none";
+  }
+}
+//contact seller
+    document.getElementById("contact").addEventListener("click", function() {
+      window.open("page-contactseller.html");
+    });
 
     function toggleLogout(){
       window.location.href = "page-signout.php";
@@ -196,6 +207,18 @@ if (!isset($_SESSION['loggedin'])) {
                }
            });
        });
+// add profile picture
+function updateProfilePicture(event) {
+    var profilePicture = document.getElementById("profile_picture");
+    var file = event.target.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      profilePicture.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  }
 
     </script>
   </body>

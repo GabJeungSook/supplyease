@@ -137,6 +137,8 @@ session_start();
 
     </div>
 
+    
+
     <!-- categories -->
 
     <!-- splash body -->
