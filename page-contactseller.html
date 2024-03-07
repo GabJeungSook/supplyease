@@ -3,10 +3,15 @@
 <head>
   <title>Customer Service Page</title>
   <link rel="stylesheet" href="./static/styles/style-contactseller.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
-  <div class="grid-container">
-    <div class="container container-contact">
+<div class="search-container">
+  <input type="search" class="search-input" name="query" placeholder="Search...">
+    <button class="search-button" type="submit"><i class="material-icons">search</i></button>
+
+</div>
+    <div class="container-contact">
       <h1>Contact Information</h1>
       <div class="contact-info">
         <label>Contact us through: </label><br>
@@ -15,7 +20,7 @@
       </div>
     </div>
   
-    <div class="container container-FAQs">
+    <div class="container-FAQs">
       <h1>FAQs</h1>
       <div class="faq">
         <h3>Question 1?</h3>
@@ -26,7 +31,7 @@
       </div>
     </div>
   
-    <div class="container container-policies">
+    <div class="container-policies">
       <h1>Return and Refund Policies</h1>
       <div class="return-policy">
         <p>Our return policy allows you to return the product within 30 days of purchase. 
@@ -34,7 +39,7 @@
       </div>
     </div>
   
-    <div class="container container-chat">
+    <div class="container-chat">
       <h1>Live Chat Messaging</h1>
       <p>Welcome to our live chat! Our team is dedicated to ensuring your satisfaction 
         and providing prompt assistance. Feel free to ask any questions or share any 
@@ -49,7 +54,7 @@
         
         Thank you for choosing our live chat. We look forward to assisting you!</p>
       <div class="live-chat">
-        <button onclick="openChat()">Chat with Us</button>
+        <button class="chat" onclick="openChat()">Chat with Us</button>
       </div>
     </div>
   </div>
