@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Customer Service Page</title>
   <link rel="stylesheet" href="./static/styles/style-contactseller.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
-<div class="search-container">
-  <input type="search" class="search-input" name="query" placeholder="Search...">
-    <button class="search-button" type="submit"><i class="material-icons">search</i></button>
 
-</div>
-    <div class="container-contact">
-      <h1>Contact Information</h1>
-      <div class="contact-info">
-        <label>Contact us through: </label><br>
-        <p>Phone: 123-456-7890</p>
-        <p>Email: info@example.com</p>
-      </div>
+<body>
+  <div class="customer-service">
+    <div class="customer-service-header">
+      <img src="static/images/SupplyEase-Logo.png" alt="SupplyEase Logo">
+      <h1>SupplyEase</h1>
     </div>
-  
+    <p>Have Questions? We're Here to Help!</p>
+  </div>
+
+  <div class="cards-container">
+
     <div class="container-FAQs">
       <h1>FAQs</h1>
       <div class="faq">
@@ -30,35 +28,38 @@
         <!-- Add more FAQs as needed -->
       </div>
     </div>
-  
+
     <div class="container-policies">
       <h1>Return and Refund Policies</h1>
       <div class="return-policy">
-        <p>Our return policy allows you to return the product within 30 days of purchase. 
+        <p>Our return policy allows you to return the product within 30 days of purchase.
           Please make sure the product is unused and in its original packaging.</p>
       </div>
     </div>
-  
+
     <div class="container-chat">
       <h1>Live Chat Messaging</h1>
-      <p>Welcome to our live chat! Our team is dedicated to ensuring your satisfaction 
-        and providing prompt assistance. Feel free to ask any questions or share any 
-        concerns you may have. We're ready to help you find the information you're 
+      <p>Welcome to our live chat! Our team is dedicated to ensuring your satisfaction
+        and providing prompt assistance. Feel free to ask any questions or share any
+        concerns you may have. We're ready to help you find the information you're
         looking for and guide you through any process.
-        If you're interested in learning more about our offerings, 
-        we can provide you with detailed information and help you make an informed decision. 
+        If you're interested in learning more about our offerings,
+        we can provide you with detailed information and help you make an informed decision.
         We value your time and aim to provide efficient and effective support.
-        Please note that our live chat is available during our business hours. 
-        If you reach out to us outside of these hours, we'll get back to you as soon as possible 
+        Please note that our live chat is available during our business hours.
+        If you reach out to us outside of these hours, we'll get back to you as soon as possible
         when we're back online.
-        
+
         Thank you for choosing our live chat. We look forward to assisting you!</p>
       <div class="live-chat">
         <button class="chat" onclick="openChat()">Chat with Us</button>
       </div>
     </div>
+    
   </div>
-  
+
+
+
   <script>
     /* JS Code */
     function openChat() {
@@ -66,4 +67,5 @@
     }
   </script>
 </body>
+
 </html>
