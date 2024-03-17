@@ -134,8 +134,9 @@ session_start();
         </div>
     </div>
     <!-- products -->
+<!-- Sample Product Card -->
 
-    </div>
+    
 
     
 
@@ -253,6 +254,8 @@ session_start();
         });
     }
 
+
+        //-------------------
     $('.products-container').on('click', '.product-card button', function() {
         var productId = $(this).data('product-id');
         // Add the selected product to the cart
@@ -260,6 +263,7 @@ session_start();
 
         // Update the number of items in the cart
         // updateCartItems();
+
 
 
     });
@@ -326,6 +330,21 @@ session_start();
             }
         });
     }
+  // JavaScript to show/hide the description pop-up
+document.addEventListener('DOMContentLoaded', function() {
+  const productCards = document.querySelectorAll('.product-card');
+  productCards.forEach(card => {
+    card.addEventListener('click', function() {
+      this.classList.toggle('active');
+    });
+  });
+}); 
+function toggleDescription(trigger) {
+  const popup = trigger.nextElementSibling;
+  popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+}
+
+
 </script>
 
 
