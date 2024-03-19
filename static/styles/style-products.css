@@ -246,4 +246,57 @@ body {
     cursor: pointer;
     border-radius: 0 0 10px 10px;
 }
+#categoriesTable {
+  background-color:aliceblue; 
+  border:solid black 2px;
+  box-shadow: 5px 5px 15px rgba(0,  0, 0, 0.1);
+}
 
+thead{
+  background-color: #5F6F52;
+}
+.btn-add{
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 20px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+  padding: 1px;
+  margin-bottom: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.685);
+
+}
+.btn-add:hover{
+  color: #fff;
+}
+.btn-add:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #246dec;
+  transition: all .35s;
+}
+.btn-add:hover::after{
+  width: 100%;
+
+}
+span{
+  position: relative;
+  z-index: 2;
+}
+.font-weight-bold {
+  color: #000000;
+   letter-spacing:5px; 
+   text-shadow: 2px 2px 4px rgba(149, 112, 112, 0.5);
+   text-shadow: 2px 0 0 #E2F4C5, -2px 0 0 #A8CD9F, 0 2px 0 #E2F4C5, 0 -2px 0 #A8CD9F, 2px 2px 2px #E2F4C5;
+ }

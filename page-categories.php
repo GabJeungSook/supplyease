@@ -39,7 +39,7 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="grid-container">
 
 
-      <header class="header">
+    <!--  <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
         </div>
@@ -49,7 +49,7 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="header-right">
   
         </div>
-      </header>
+      </header> -->
       <!-- End Header -->
 
       <!-- Sidebar -->
@@ -112,20 +112,21 @@ if (!isset($_SESSION['loggedin'])) {
       <!-- End Sidebar -->
 
       <!-- Main -->
-      <main class="main-container">
-        <div class="main-title">
-          <p class="font-weight-bold">Categories</p>
+      <main class="main-container" >
+        <div class="main-title" style="margin-top:-20px;">
+          <p class="font-weight-bold" style=" font-size: 60px;">CATEGORIES</p>
         </div>
         <?php
         $query = "SELECT * FROM categories";
         $result = mysqli_query($conn, $query);
         ?>
-        <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#addCategoryModal">Add Category</button>
+        <button type="button" class="btn-category" data-toggle="modal" data-target="#addCategoryModal"><span>Add Category</span></button>
        <table id="categoriesTable" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Action</th> <!--Delete button -->
                 </tr>
             </thead>
             <tbody>
@@ -133,6 +134,9 @@ if (!isset($_SESSION['loggedin'])) {
                 <tr>
                     <td><?php echo $row['category_id']; ?></td>
                     <td><?php echo $row['name']; ?></td>
+                    <td>
+            <button onclick="deleteCategory(<?php echo $row['category_id']; ?>)" class="btn btn-danger">Delete</button>
+          </td>
                     <!-- Add more cells for other category attributes -->
                 </tr>
             <?php } ?>
@@ -204,5 +208,6 @@ if (!isset($_SESSION['loggedin'])) {
         });
     });
     </script>
+ 
   </body>
 </html>

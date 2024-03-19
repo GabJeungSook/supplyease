@@ -22,14 +22,25 @@ if ($_SERVER["REQUEST_METHOD"]) {
             echo '<div class="product-card">';
             echo '<img src="static/images/SupplyEase-Logo.png" alt="" />';
             echo '<h4 style="font-size: 14px;">' . $row['name'] . '</h4>';
+            
+            //Drop down
+            echo '<div class="dropdown">';
+            echo '<button class="dropbtn">Select Variation</button>';
+            echo '<div class="dropdown-content">';
+            echo '<a href="#">Option 1</a>';
+            echo '<a href="#">Option 2</a>';
+            echo '<a href="#">Option 3</a>';
+            echo '</div>';
+            echo '</div>';
+            //
             echo '<p class="description-trigger" style="color:black;" onclick="toggleDescription(this)">More Details</p>';
             echo '<div class="description-popup" style="display: none; color: black; font-weight: bold; text-align:center;">';
             echo '<p>' . $row['description'] . '</p>';
-       
+            echo '<p> Quantity: ' . $row['available_quantity'];
             echo '</div>';
-            
             echo '<div>';
             echo '<span>₱' . $row['price'] . '</span>';
+            
             echo '<button class="add-to-cart-btn" data-product-id="' . $row['product_id'] . '">Add to Cart</button>';
             echo '</div>';
             echo '</div>';

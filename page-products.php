@@ -38,7 +38,7 @@ if (!isset($_SESSION['loggedin'])) {
     <div class="grid-container">
 
 
-      <header class="header">
+      <!--<header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
         </div>
@@ -48,7 +48,7 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="header-right">
           
         </div>
-      </header>
+      </header> -->
       <!-- End Header -->
 
       <!-- Sidebar -->
@@ -112,8 +112,8 @@ if (!isset($_SESSION['loggedin'])) {
 
       <!-- Main -->
       <main class="main-container">
-        <div class="main-title">
-          <p class="font-weight-bold">Products</p>
+        <div class="main-title" style="margin-top:-20px;">
+          <p class="font-weight-bold" style="font-size:60px;">PRODUCTS</p>
         </div>
         <?php
         $query = "SELECT p.product_id, c.name AS category, p.name, p.description, p.price, p.available_quantity
@@ -121,7 +121,7 @@ if (!isset($_SESSION['loggedin'])) {
         INNER JOIN categories c ON p.category_id = c.category_id";
         $result = mysqli_query($conn, $query);
         ?>
-         <button type="button" class="btn btn-primary mb-4" data-toggle="modal" data-target="#addProductModal">Add Product</button>
+         <button type="button" class="btn-add" data-toggle="modal" data-target="#addProductModal"><span>Add Product</span></button>
        <table id="categoriesTable" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
@@ -130,6 +130,8 @@ if (!isset($_SESSION['loggedin'])) {
                     <th>Description</th>
                     <th>Price</th>
                     <th>Quantity</th>
+                    <th>Image</th> <!--ADDED-->
+                    <th>Action</th> 
                 </tr>
             </thead>
             <tbody>
@@ -140,6 +142,10 @@ if (!isset($_SESSION['loggedin'])) {
                     <td><?php echo $row['description']; ?></td>
                     <td><?php echo $row['price']; ?></td>
                     <td><?php echo $row['available_quantity']; ?></td>
+                    <td></td>
+                    <td>
+            <button onclick="deleteCategory(<?php echo $row['product_id']; ?>)" class="btn btn-danger">Delete</button>
+          </td>
 
                     <!-- Add more cells for other category attributes -->
                 </tr>
@@ -176,6 +182,12 @@ if (!isset($_SESSION['loggedin'])) {
                               ?>
                           </select>
                       </div>
+                      <!--ADDED-->
+                      <div class="form-group">
+                        <label for="productImage">Add Image:</label>
+                        <input type="file" class="form-control-file" id="productImage" name="productImage" accept="image/*" required>
+                      </div>
+                     
                     <div class="form-group">
                         <label for="productName">Product Name:</label>
                         <input type="text" class="form-control" id="productName" name="productName" required>

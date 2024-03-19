@@ -241,7 +241,12 @@ body {
     background-color: #a5aaad;
   }
   
-  
+  .font-weight-bold {
+    color: #000000;
+     letter-spacing:5px; 
+     text-shadow: 2px 2px 4px rgba(149, 112, 112, 0.5);
+     text-shadow: 2px 0 0 #E2F4C5, -2px 0 0 #A8CD9F, 0 2px 0 #E2F4C5, 0 -2px 0 #A8CD9F, 2px 2px 2px #E2F4C5;
+   }
   /* ---------- MEDIA QUERIES ---------- */
   
   
@@ -288,3 +293,4 @@ body {
       display: none;
     }
   }
+

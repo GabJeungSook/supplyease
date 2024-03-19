@@ -18,5 +18,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Error handling if insertion fails
         echo "Error: " . mysqli_error($conn);
     }
+} elseif ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['deleteCategory'])) {
+    // Validate input
+    $categoryId = $_GET['deleteCategory'];
+
+    // Delete category from database
+    $deleteQuery = "DELETE FROM categories WHERE category_id = $categoryId";
+    
+    // Execute the delete query
+    if (mysqli_query($conn, $deleteQuery)) {
+        // Category deleted successfully
+        echo "<script>showAlert('Category deleted!', 'success');</script>";
+    } else {
+        // Error handling if deletion fails
+        echo "Error: " . mysqli_error($conn);
+    }
 }
 ?>

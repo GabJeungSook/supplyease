@@ -27,7 +27,7 @@ if (!isset($_SESSION['loggedin'])) {
   <body>
     <div class="grid-container">
 
-      <header class="header">
+     <!-- <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
         </div>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedin'])) {
         <div class="header-right">
          
         </div>
-      </header>
+      </header> -->
       <!-- End Header -->
 
       <!-- Sidebar -->
@@ -72,11 +72,6 @@ if (!isset($_SESSION['loggedin'])) {
           </li>
           <li class="sidebar-list-item">
             <a href="#">
-              <span class="material-icons-outlined">shopping_cart</span> Sales Orders
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="#">
               <span class="material-icons-outlined">settings</span> Settings
             </a>
           </li>
@@ -91,34 +86,53 @@ if (!isset($_SESSION['loggedin'])) {
 
       <!-- Main -->
       <main class="main-container">
-        <div class="main-title">
-          <p class="font-weight-bold">DASHBOARD</p>
+        <div class="main-title" style="margin-top:-60px;">
+          <p class="font-weight-bold" style=" font-size: 60px;">DASHBOARD</p>
         </div>
 
         <div class="main-cards">
 
-          <div class="card">
+          <div class="card" onclick="window.location.href='page-products.php';" style="cursor: pointer;">
             <div class="card-inner">
               <p class="text-primary">PRODUCTS</p>
               <span class="material-icons-outlined text-blue">inventory_2</span>
             </div>
-            <span class="text-primary">249</span>
+            <span class="text-primary"> <?php
+                // Include the database configuration file
+                  include 'config.php';
+
+                  // Execute a query to get the total count of products
+                  $query = "SELECT COUNT(*) AS total_products FROM products";
+                  $result = mysqli_query($conn, $query);
+                  $row = mysqli_fetch_assoc($result);
+                  echo $row['total_products'];
+                  ?>
+              </span>
           </div>
 
-          <div class="card">
+         
+          <div class="card" onclick="window.location.href='page-categories.php';" style="cursor: pointer;">
+  <div class="card-inner">
+    <p class="text-primary">CATEGORIES</p>
+    <span class="material-icons-outlined text-green">shopping_cart</span>
+  </div>
+  <span class="text-primary">
+    <?php
+    // Execute a query to get the total count of categories
+    $query = "SELECT COUNT(*) AS total_categories FROM categories";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    echo $row['total_categories'];
+    ?>
+  </span>
+</div>
+
+<div class="card">
             <div class="card-inner">
               <p class="text-primary">PURCHASE ORDERS</p>
               <span class="material-icons-outlined text-orange">add_shopping_cart</span>
             </div>
             <span class="text-primary">83</span>
-          </div>
-
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">SALES ORDERS</p>
-              <span class="material-icons-outlined text-green">shopping_cart</span>
-            </div>
-            <span class="text-primary">79</span>
           </div>
 
         </div>
@@ -131,7 +145,7 @@ if (!isset($_SESSION['loggedin'])) {
           </div>
 
           <div class="charts-card">
-            <p class="chart-title">Purchase and Sales Orders</p>
+            <p class="chart-title">Purchase Orders</p>
             <div id="area-chart"></div>
           </div>
 
