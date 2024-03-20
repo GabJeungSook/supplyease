@@ -207,7 +207,7 @@ session_start();
                     ?></span></p>
                 </div>
                 <!-- <button>View Cart</button> -->
-                <a href="page-checkout.html">
+                <a href="page-checkout.php">
                     <button>Check Out</button>
                   </a>
             </div>
