@@ -33,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"]) {
             echo '</div>';
             echo '</div>';
             //
-            echo '<p class="description-trigger" style="color:black;" onclick="toggleDescription(this)">More Details</p>';
-            echo '<div class="description-popup" style="display: none; color: black; font-weight: bold; text-align:center;">';
-            echo '<p>' . $row['description'] . '</p>';
-            echo '<p> Quantity: ' . $row['available_quantity'];
+            echo '<p class="description-trigger" style="color:black; cursor:pointer;" onclick="toggleDescription(this)">More Details</p>';
+            echo '<div class="description-popup" style="display: none; color: black;  ">';
+            echo '<p style="background-color:gray; text-align:center;">' . $row['description'] . '</p>';
+            echo '<p style="font-weight: bold; text-align:left; padding-bottom:10px;"> Quantity: ' . $row['available_quantity'];
             echo '</div>';
             echo '<div>';
             echo '<span>₱' . $row['price'] . '</span>';

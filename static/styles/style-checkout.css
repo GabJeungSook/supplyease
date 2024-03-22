@@ -39,6 +39,7 @@ background: #888;
 }
 
 .logo img {
+  margin-left: 5px;
   width: 80px;
   height: 80px;
 }
@@ -65,6 +66,7 @@ background: #888;
 .default-container h4 {
   color: #333;
   margin-bottom: 10px;
+  margin-top: -5px;
 }
 
 /* Apply styles to the product container */
@@ -120,4 +122,34 @@ background: #888;
 }
 .payment-button:hover{
   background-color: #28a745;
+}
+
+
+.left-column {
+  flex: 1;
+  margin-right: 10px;
+  padding-bottom: 5px;
+}
+
+.right-column {
+  float: right;
+  margin-top: -50px;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+.price, p, span{
+  float: right;
+  
 }

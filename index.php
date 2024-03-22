@@ -96,10 +96,10 @@ session_start();
         <!-- header -->
 
         <!-- categories -->
-        <div class="categories-container">
+        <div class="categories-container" >
         <h3>CATEGORIES</h3>
 
-        <ul class="categories">
+        <ul class="categories" >
             <li class="button active" data-category="All Products">All Products</li>
             <?php
 
@@ -125,7 +125,9 @@ session_start();
     <div class="products" style="background-color:white;">
         <div class="products-container">
             <div class="product-header" style="margin-top: 40px;">
-                <h3 style="color:black;">Product Lists</h3>
+                <h3 style="color:black; letter-spacing:7px; 
+  text-shadow: 2px 2px 4px rgba(149, 112, 112, 0.5); 
+  text-shadow: 2px 0 0 #627254, -2px 0 0 #58A399, 0 2px 0 #627254, 0 -2px 0 #58A399, 2px 2px 2px #627254;">Product Lists</h3>
             </div>
             <div class="product-lists">
 
