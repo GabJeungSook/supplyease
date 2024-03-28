@@ -40,6 +40,7 @@ if (isset($_POST['productId'])) {
         // Loop through products and generate product cards
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<div class="cart_item">';
+            echo '<input type="checkbox" name="selected_products[]" value="'.$row['product_id'].'">'; // for checkbox
             echo '<div class="remove_item">';
             echo '<span>&times;</span>';
             echo '</div>';

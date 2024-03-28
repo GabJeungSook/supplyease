@@ -130,7 +130,7 @@ if (!isset($_SESSION['loggedin'])) {
 <div class="card">
             <div class="card-inner">
               <p class="text-primary">PURCHASE ORDERS</p>
-              <span class="material-icons-outlined text-orange">add_shopping_cart</span>
+           <!--   <span class="material-icons-outlined text-orange">add_shopping_cart</span>-->
             </div>
             <span class="text-primary">83</span>
           </div>

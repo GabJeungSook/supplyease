@@ -7,7 +7,7 @@ if (!isset($_SESSION['loggedin'])) {
 }
 $name = $_SESSION['name'];
 $address = $_SESSION['address'];
-$phone = $_SESSION['phone_number'];
+//$phone = $_SESSION['phone_number'];
 ?>
 
 
@@ -38,10 +38,10 @@ $phone = $_SESSION['phone_number'];
             <label for="name">Name</label>
             <input type="text" id="name" name="name" value="<?php echo $name; ?>">
         </div>
-        <div class="left-column">
+      <!--  <div class="left-column">
             <label for="phone">Phone Number</label>
             <input type="text" id="phone" name="phone" value="<?php echo $phone; ?>">
-        </div>
+        </div> -->
         <div class="right-column">
             <label for="address">Address</label>
             <input type="text" id="address" name="address" value="<?php echo $address; ?>">
@@ -91,9 +91,10 @@ $phone = $_SESSION['phone_number'];
     </div>
 
     <div class="payment-container">
-        <h4>Payment Method</h4>
-        <button class="payment-button">Complete Payment</button>
-    </div>
+    <h4>Payment Method</h4>
+    <button class="payment-button">Complete Payment</button>
+    <button class="payment-button" id="cash-on-delivery">Cash on Delivery</button>
+</div>
   
 </body>
 

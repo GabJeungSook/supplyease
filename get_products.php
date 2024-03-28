@@ -24,14 +24,14 @@ if ($_SERVER["REQUEST_METHOD"]) {
             echo '<h4 style="font-size: 14px;">' . $row['name'] . '</h4>';
             
             //Drop down
-            echo '<div class="dropdown">';
-            echo '<button class="dropbtn">Select Variation</button>';
-            echo '<div class="dropdown-content">';
-            echo '<a href="#">Option 1</a>';
-            echo '<a href="#">Option 2</a>';
-            echo '<a href="#">Option 3</a>';
-            echo '</div>';
-            echo '</div>';
+           // echo '<div class="dropdown">';
+              //echo '<button class="dropbtn">Select Variation</button>';
+           // echo '<div class="dropdown-content">';
+            //echo '<a href="#">Option 1</a>';
+            //echo '<a href="#">Option 2</a>';
+           // echo '<a href="#">Option 3</a>';
+           // echo '</div>';
+           // echo '</div>';
             //
             echo '<p class="description-trigger" style="color:black; cursor:pointer;" onclick="toggleDescription(this)">More Details</p>';
             echo '<div class="description-popup" style="display: none; color: black;  ">';
