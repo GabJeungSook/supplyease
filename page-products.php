@@ -101,7 +101,7 @@ if (!isset($_SESSION['loggedin'])) {
           <p class="font-weight-bold" style="font-size:60px;">PRODUCTS</p>
         </div>
         <?php
-        $query = "SELECT p.product_id, c.name AS category, p.name, p.description, p.price, p.available_quantity
+        $query = "SELECT p.product_id, c.name AS category, p.name, p.description, p.price, p.available_quantity, p.image_path
         FROM products p
         INNER JOIN categories c ON p.category_id = c.category_id";
         $result = mysqli_query($conn, $query);
@@ -127,10 +127,12 @@ if (!isset($_SESSION['loggedin'])) {
                     <td><?php echo $row['description']; ?></td>
                     <td><?php echo $row['price']; ?></td>
                     <td><?php echo $row['available_quantity']; ?></td>
-                    <td></td>
                     <td>
-            <button onclick="deleteCategory(<?php echo $row['product_id']; ?>)" class="btn btn-danger">Delete</button>
-          </td>
+                      <img src="<?php echo $row['image_path']; ?>" width="100" height="100" alt="No Image">
+                    </td>
+                    <td>
+                      <button onClick="deleteProduct(<?php echo $row['product_id']; ?>)" class="btn btn-danger">Delete</button>
+                    </td>
 
                     <!-- Add more cells for other category attributes -->
                 </tr>
@@ -151,7 +153,7 @@ if (!isset($_SESSION['loggedin'])) {
                 </button>
             </div>
             <div class="modal-body">
-                <form id="addProductForm">
+                <form id="addProductForm" enctype="multipart/form-data">
                   <div class="form-group">
                           <label for="category">Category:</label>
                           <select class="form-control" id="category" name="category" required>
@@ -169,8 +171,14 @@ if (!isset($_SESSION['loggedin'])) {
                       </div>
                       <!--ADDED-->
                       <div class="form-group">
-                        <label for="productImage">Add Image:</label>
-                        <input type="file" class="form-control-file" id="productImage" name="productImage" accept="image/*" required>
+                      <label for="image_uploads">Choose image to upload (PNG, JPG)</label>
+                      <input
+                        class="form-control"
+                        type="file"
+                        id="image_uploads"
+                        name="image_uploads"
+                        accept=".jpg, .jpeg, .png"
+                        />
                       </div>
                      
                     <div class="form-group">
@@ -214,33 +222,53 @@ if (!isset($_SESSION['loggedin'])) {
     $(document).ready(function() {
         // Submit form via AJAX
         $('#addProductForm').submit(function(event) {
-           
-            event.preventDefault(); // Prevent default form submission
+    event.preventDefault();
 
-            // Get form data
-            var formData = $(this).serialize();
-           
-            // Submit form data via AJAX
-            $.ajax({
-                type: 'POST',
-                url: 'add_product_process.php',
-                data: formData,
-                success: function(response) {
-                  console.log(formData);
-                    // Handle response (e.g., show success message, update category list)
-                    // window.setTimeout(function() { window.location.href = 'page-categories.php'; }, 100);
-                    // Close modal
-                    $('#addProductModal').modal('hide');
-                    // Reload or update category list
-                    window.location.reload();
-                },
-                error: function(xhr, status, error) {
-                    // Handle errors
-                    console.error(xhr.responseText);
-                }
-            });
-        });
+    // Get form data
+    var formData = new FormData(this);
+    formData.append("image_uploads", $("#image_uploads").prop("files")[0]);
+
+    // Send the form data to the server
+    $.ajax({
+        type: 'POST',
+        url: 'add_product_process.php',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+            console.log(response);
+            window.location.reload();
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+        }
     });
+});
+    });
+    </script>
+    <script type="text/javascript">
+
+      function deleteProduct(id) {
+        if (confirm("Are you sure you want to delete this product?")) {
+            // Send a DELETE request to the server
+            $.ajax({
+              url: 'delete_product.php',
+              type: 'POST',
+              data: { product_id: id },
+              success: function(response) {
+                // If the request was successful, hide the button
+                console.log(response);
+                $('button[data-product-id="' + id + '"]').hide();
+                window.location.reload();
+              },
+              error: function(xhr, status, error) {
+                // If there was an error, show an error message
+                alert('Error deleting product: ' + xhr.responseText);
+              }
+            });
+          }
+      }
+
     </script>
   </body>
 </html>

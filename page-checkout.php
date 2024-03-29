@@ -5,9 +5,15 @@ if (!isset($_SESSION['loggedin'])) {
     header("Location: page-signin.php");
     exit();
 }
-$name = $_SESSION['name'];
-$address = $_SESSION['address'];
+ $id = $_SESSION['user_id'];
+ $name = $_SESSION['name'];
+ $address = $_SESSION['address'];
+ include_once 'config.php';
+ 
 //$phone = $_SESSION['phone_number'];
+
+
+
 ?>
 
 
@@ -18,16 +24,22 @@ $address = $_SESSION['address'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout Page</title>
-    <link rel="Stylesheet" href="../static/styles/style-checkout.css">
+    <link rel="Stylesheet" href="./static/styles/style-checkout.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="header-container">
+    <!-- <div class="header-container">
         <div class="logo">
             <img src="static/images/SupplyEase-Logo.png" alt="">
             <h1>SupplyEase</h1>
         </div>
-    </div>
+    </div> -->
 
     <div class="default-container">
         <h4>Delivery Details</h4>
@@ -35,17 +47,24 @@ $address = $_SESSION['address'];
 
    
         <div class="left-column">
-            <label for="name">Name</label>
+            <label for="name">Name : </label>
             <input type="text" id="name" name="name" value="<?php echo $name; ?>">
         </div>
       <!--  <div class="left-column">
             <label for="phone">Phone Number</label>
             <input type="text" id="phone" name="phone" value="<?php echo $phone; ?>">
         </div> -->
-        <div class="right-column">
-            <label for="address">Address</label>
+        <div class="right-column" style="padding-top: 23px">
+            <label for="address">Address : </label>
             <input type="text" id="address" name="address" value="<?php echo $address; ?>">
-            <a href="#">Change</a>
+            <?php
+                if($_SESSION['address'] === null)
+                {
+                echo '<button onclick="addAddress('.$id.')">Add</button>';
+                }else{
+                    echo '<button onclick="addAddress('.$id.')">Change</button>';
+                }
+            ?>
         </div>
     
     </div>
@@ -57,45 +76,69 @@ $address = $_SESSION['address'];
         <tr>
             <th>Product</th>
             <th>Unit Price</th>
-            <th>Amount</th>
+            <th>Quantity</th>
             <th>Item Subtotal</th>
         </tr>
         <tr>
-            <td><a href="#">Product 1</a></td>
-            <td>$15</td>
-            <td>4</td>
-            <td>$60</td>
-        </tr>
-        <tr>
-            <td><a href="#">Product 2</a></td>
-            <td>$5</td>
-            <td>2</td>
-            <td>$10</td>
-        </tr>
-        <tr>
-            <td><a href="#">Product 3</a></td>
-            <td>$8</td>
-            <td>3</td>
-            <td>$24</td>
-        </tr>
-        <tr>
-            <td><a href="#">Product 4</a></td>
-            <td>$2</td>
-            <td>5</td>
-            <td>$10</td>
+        <?php 
+             $total = 0;
+             $query = "SELECT a.cart_id, a.user_id, b.name, b.price, a.quantity FROM carts a 
+             LEFT JOIN products b ON a.product_id = b.product_id WHERE a.user_id = '$id'";
+             $result = mysqli_query($conn, $query);
+             if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<td><a href="#">'.$row['name'].'</a></td>';
+                    echo '<td>₱ '.$row['price'].'</td>';
+                    echo '<td>'.$row['quantity'].'</td>';
+                    echo '<td>₱ '.($row['price'] * $row['quantity']).'</td>';
+                    $total += ($row['price'] * $row['quantity']);
+                }
+            
+            }
+        ?>
         </tr>
     </table>
     <hr>
-      <p>Total:  <span class="price" style="color:black"><b>$30</b></span></p>
+      <p>Total:  <span class="price" style="color:black"><b><?php echo '₱ '. number_format($total, 2)?></b></span></p>
       <!----------------------------------------------------------------------------->
     </div>
 
     <div class="payment-container">
-    <h4>Payment Method</h4>
-    <button class="payment-button">Complete Payment</button>
-    <button class="payment-button" id="cash-on-delivery">Cash on Delivery</button>
+    <h4>Payment</h4>
+    <small>All payment are processed through COD (Cash on delivery) only.</small>
+    <button class="payment-button">Complete Checkout</button>
 </div>
   
 </body>
+
+<script>
+    function addAddress(id)
+    {
+        if (confirm("Are you sure you want to add this address?")) {
+    
+            var address = document.getElementById('address');
+            // console.log(address.value);
+            var data = {
+                user_id: id,
+                address: address.value
+            }
+            $.ajax({
+              url: 'add_address.php',
+              type: 'POST',
+              data: data,
+              success: function(response) {
+                // If the request was successful, hide the button
+                console.log(response);
+                alert('Address successfully added!');
+                window.location.reload();
+              },
+              error: function(xhr, status, error) {
+                // If there was an error, show an error message
+                alert('Error deleting product: ' + xhr.responseText);
+              }
+            });
+          }   
+    }
+</script>
 
 </html>

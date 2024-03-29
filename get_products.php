@@ -20,7 +20,13 @@ if ($_SERVER["REQUEST_METHOD"]) {
         // Loop through products and generate product cards
         while ($row = mysqli_fetch_assoc($result)) {
             echo '<div class="product-card">';
-            echo '<img src="static/images/SupplyEase-Logo.png" alt="" />';
+            if($row["image_path"] === null)
+            {
+                echo '<img src="static/images/SupplyEase-Logo.png" alt="Product Image" />';    
+            }else{
+                echo '<img src="'.$row["image_path"].'" alt="Product Image" />';
+            }
+            
             echo '<h4 style="font-size: 14px;">' . $row['name'] . '</h4>';
             
             //Drop down

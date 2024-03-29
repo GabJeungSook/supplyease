@@ -52,7 +52,9 @@ if (isset($_SESSION['loggedin'])) {
                     $password = $_POST['password'];
 
                     // Perform SQL select query to check credentials
-                    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+                    $sql = "SELECT a.user_id, a.role_id, a.name, a.username, a.password, b.address 
+                    FROM users a LEFT JOIN user_profile b ON 
+                    a.user_id = b.user_id WHERE a.username='$username' AND a.password='$password'";
                     $result = $conn->query($sql);
 
                     // Check if result contains any rows
@@ -65,6 +67,9 @@ if (isset($_SESSION['loggedin'])) {
                         
                         $row = $result->fetch_assoc();
                         $_SESSION['user_id'] = $row['user_id'];
+                        $_SESSION['name'] = $row['name'];
+                        $_SESSION['address'] = $row['address'];
+                        // $_SESSION['']
                         if($row['role_id'] === '1')
                         {
                             echo "<script>window.setTimeout(function() { window.location.href = 'page-adminpanel.php'; }, 100);</script>";

@@ -10,7 +10,7 @@ if (!isset($_SESSION['loggedin'])) {
     exit();
 }
 $userId = $_SESSION['user_id'];
-$select_query = "SELECT carts.cart_id, carts.user_id, carts.quantity, products.name, products.price FROM carts INNER JOIN products ON carts.product_id = products.product_id WHERE carts.user_id = $userId";
+$select_query = "SELECT carts.cart_id, carts.user_id, carts.quantity, products.name, products.image_path, products.price FROM carts INNER JOIN products ON carts.product_id = products.product_id WHERE carts.user_id = $userId";
 $result = mysqli_query($conn, $select_query);
 $cart_count = mysqli_num_rows($result);
 $_SESSION['cart_count'] = $cart_count;
@@ -22,7 +22,12 @@ if (mysqli_num_rows($result) > 0) {
         echo '<span type="button" data-product-id="' . $row['cart_id'] . '">&times;</span>';
         echo '</div>';
         echo '<div class="item_img">';
-        echo '<img src="static/images/slideshow/t3.jpg" alt="">';
+        if($row["image_path"] === null)
+        {
+            echo '<img src="static/images/slideshow/t3.jpg" alt="Product Image">';
+        }else{
+            echo '<img src="'.$row["image_path"].'" alt="Product Image" />';
+        }
         echo '</div>';
         echo '<div class="item_details">';
         echo '<p>'.$row['name'].'</p>';
