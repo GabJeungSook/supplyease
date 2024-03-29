@@ -1,23 +1,23 @@
 * {
-    margin: 0;
-    padding: 0;
-    outline: none;
-    border: none;
-    list-style: none;
-    text-decoration: none;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 
 }
 
 body {
-   /*---- background-image: url(../images/bg.png);
+  /*---- background-image: url(../images/bg.png);
     background-repeat: no-repeat;
     background-size: cover;*/
 }
 
 ::-webkit-scrollbar {
-    width: 3px;
+  width: 3px;
 }
 
 /* .customer-service {
@@ -59,26 +59,25 @@ body {
   flex: 2;
 }
 
-.cards-container{
+.cards-container {
   margin-top: 5px;
   display: flex;
   height: 30rem;
   overflow-y: auto;
-  align-items: center;
-  text-align: center;
-  padding:0;
+  /* align-items: center;
+  text-align: center; */
+  padding: 0;
   /*background-color: #ADD8E6;*/
-
-  
 }
- 
+
 .container-FAQs,
 .container-policies,
 .container-chat {
   width: 90%;
   height: 90%;
-  margin: 5px 5px 5px ;
+  margin: 5px 5px 5px;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
 
   /* overflow-y: auto;
   height: 30rem;
@@ -89,50 +88,77 @@ body {
 
 
 .container-FAQs {
-  background: red;
+  /* background: rgb(45, 225, 0); */
+  background: #d3f9d8;
 }
 
 .container-policies {
-  background: green;
+  /* background: green; */
+  background: #94d3a2;
 }
 
 .container-chat {
-  background: #163020;
+  /* background: #163020; */
+  background: #5b8a64;
 }
-.container-FAQs,
-.container-policies,
-.container-chat h1{
-padding-top: 10px;
 
+/* .container-FAQs h1 {
+  padding-bottom: 20px;
+} */
 
+.container-FAQs .faq h3 {
+  padding-top: 10px;
 }
-.container-chat p{
+
+.container-FAQs h1,
+.container-policies h1,
+.container-chat h1 {
+  padding-top: 10px;
+}
+
+.container-chat p {
   display: block;
   padding-top: 10px;
   color: #fff;
 }
-.chat{
-    padding: 30px;
-    width: 50%;
-    height: 50%;
-    margin-top: -1px;
-   margin-left: 70px;
+
+.chat {
+  padding: 30px;
+  width: 50%;
+  height: 50%;
+  margin-top: 20px;
+  /* margin-top: -1px;
+  margin-left: 70px; */
+  font-size: medium;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
+
 .container-chat i {
   display: block;
   padding-top: 20px;
 }
-.chat{
-margin-top: 20px;
-margin-left: 30px;
-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
+.chat:hover {
+  background-color: #5F6F52;
+  color: #fff;
 }
-.container-FAQs h1{
-  
-}
-.container-policies h1{
+
+.container-FAQs h1 {
   text-shadow: -2px -2px 0 whitesmoke, -1px -1px 0 whitesmoke;
 }
-.container-chat h1{
+
+.container-policies h1 {
   text-shadow: -2px -2px 0 whitesmoke, -1px -1px 0 whitesmoke;
 }
+
+.container-chat h1 {
+  text-shadow: -2px -2px 0 whitesmoke, -1px -1px 0 whitesmoke;
+}
+
+.container-policies p {
+  /* font-size: 20px; */
+  padding: 10px;
+}
+
+
