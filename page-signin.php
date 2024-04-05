@@ -17,12 +17,18 @@ if (isset($_SESSION['loggedin'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SupplyEase Sign In</title>
     <link rel="stylesheet" type="text/css" href="static/styles/style-signin.css">
-    <script>
-        // JavaScript function to display alerts
-        function showAlert(message, type) {
-            alert(message);
-        }
-    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+// JavaScript function to display SweetAlert
+function showAlert(message, type) {
+    swal({
+        text: message,
+        icon: type,
+        button: "OK",
+    });
+}
+</script>
 </head>
 
 <body>
