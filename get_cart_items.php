@@ -18,6 +18,9 @@ if (mysqli_num_rows($result) > 0) {
     // Loop through products and generate product cards
     while ($row = mysqli_fetch_assoc($result)) {
         echo '<div class="cart_item">';
+        echo '<div class="checkbox">';
+        echo '<input type="checkbox" class="item-checkbox" name="selected_products[]" value="'. $row['cart_id']. '">';
+        echo '</div>';
         echo '<div class="remove_item">';
         echo '<span type="button" data-product-id="' . $row['cart_id'] . '">&times;</span>';
         echo '</div>';

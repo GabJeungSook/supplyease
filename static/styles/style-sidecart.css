@@ -113,16 +113,17 @@ body {
 .cart_item {
     position: relative;
     padding: 1rem;
-    width: 100%;
+    width: 95%;
     min-height: 150px;
     display: flex;
     border-bottom: 1px solid gray;
+    left: 20px;
 }
 
 .remove_item {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 15px;
     width: 20px;
     height: 20px;
     background-color: #ccc;
@@ -141,6 +142,8 @@ body {
 
 .item_img {
     flex: 1;
+    position: relative;
+    left: 5px;
 }
 
 .item_img img {
@@ -258,6 +261,49 @@ body {
 
 
 
+.checkbox {
+    margin-top: 10px;
+}
+
+.cart_item .checkbox {
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+  }
+  
+  .cart_item .checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 2px solid #4CAF50;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    margin-right: 5px;
+    position: relative;
+  }
+  
+  .cart_item .checkbox input[type="checkbox"]:checked:before {
+  content: "\2713";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #05270f;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+  .cart_item .checkbox input[type="checkbox"]:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+  }
+  
+  .cart_item .checkbox input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+  }
 
 
 
