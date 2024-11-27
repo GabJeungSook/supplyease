@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "supplyease_db";
+$servername = "146.190.85.108";
+$username = "supplyease_user";
+$password = "supplyease_password";
+$dbname = "supplyease_new";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
